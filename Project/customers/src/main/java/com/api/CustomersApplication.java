@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @SpringBootApplication
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/api")
 public class CustomersApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CustomersApplication.class, args);
 	}
 
-	@GetMapping("/")
+	@GetMapping("")
 	public String api() {
 		return "Service is up and running!";
 	}
