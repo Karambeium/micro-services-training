@@ -7,6 +7,7 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ID;
+    private String name;
     private String email;
     private String password;
 
@@ -22,6 +23,13 @@ public class Customer {
         this.ID = ID;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
     public String getEmail() {
         return email;
     }
