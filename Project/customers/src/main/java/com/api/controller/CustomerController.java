@@ -29,4 +29,10 @@ public class CustomerController {
     public Customer addCustomer(@RequestBody Customer c){
         return cr.save(c);
     }
+
+    @PostMapping("/byname")
+    public List<Customer> getByName(@RequestBody String name)
+    {
+        return cr.findByName(name);
+    }
 }
