@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Project/customers" />
+        <option name="gradleJvm" value="openjdk-19" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Project/customers" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/ProjectAssets/solution-projects/stage02/s2-back-end-cust" />
+        <option name="gradleJvm" value="openjdk-19" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/ProjectAssets/solution-projects/stage02/s2-back-end-cust" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/ProjectAssets/solution-projects/stage03/s3-back-end-cust" />
+        <option name="gradleJvm" value="openjdk-19" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/ProjectAssets/solution-projects/stage03/s3-back-end-cust" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/ProjectAssets/solution-projects/stage04/s4-back-end-auth" />
+        <option name="gradleJvm" value="openjdk-19" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/ProjectAssets/solution-projects/stage04/s4-back-end-auth" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/ProjectAssets/solution-projects/stage04/s4-back-end-cust" />
+        <option name="gradleJvm" value="openjdk-19" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/ProjectAssets/solution-projects/stage04/s4-back-end-cust" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
