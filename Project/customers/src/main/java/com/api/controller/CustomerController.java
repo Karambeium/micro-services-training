@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.api.repository.CustomerRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -30,9 +31,15 @@ public class CustomerController {
         return cr.save(c);
     }
 
-    @PostMapping("/byname")
-    public List<Customer> getByName(@RequestBody String name)
+    @PostMapping("/getByName")
+    public List<Customer> getByName(@RequestParam String name)
     {
         return cr.findByName(name);
     }
 }
+
+/**
+ curl -i -X POST -H 'Content-Type: application/json' -d '{"name": "karam", "email": "kj", "password": "pass"}' localhost:8080/api/customer/addCustomer
+ curl -i -X POST -H 'Content-Type: application/json' -d '{"name": "karam"}' localhost:8080/api/customer/getByName
+ curl -i -X POST -H 'Content-Type: application/json' -d '{"name": "karam"}' localhost:8080/api/customer/getByName?name=karam
+ */
