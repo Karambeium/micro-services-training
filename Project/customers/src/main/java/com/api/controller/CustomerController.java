@@ -16,9 +16,9 @@ public class CustomerController {
     @Autowired
     private CustomerRepository cr;
 
-    @GetMapping("/getCustomer")
-    public Customer getCustomer(@RequestParam Integer ID){
-        return cr.getByID(ID);
+    @GetMapping("/getCustomer/{id}")
+    public Customer getCustomer(@PathVariable Integer id){
+        return cr.getByID(id);
     }
 
     @GetMapping("/getAllCustomers")
