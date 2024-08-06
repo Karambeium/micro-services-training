@@ -47,7 +47,13 @@ public class CustomerController {
 
     @PutMapping("/{id}")
     public String updateCustomer(@PathVariable Integer id, @RequestBody Customer c) {
-        cr.save(c);
+        Optional<Customer> cust  = cr.findById(id);
+        cust.get().setName(c.getName());
+        cust.get().setEmail(c.getEmail());
+        if(c.getPassword()!=null) {
+            cust.get().setPassword(c.getPassword());
+        }
+        cr.save(cust.get());
         return "Updated Customer with id :" + id;
     }
 
