@@ -33,7 +33,7 @@ public class CustomerController {
     }
 
     @PostMapping("/byname")
-    public List<Customer> getByName(@RequestParam String name)
+    public List<Customer> getByName(@RequestBody String name)
     {
         return cr.findByName(name);
     }
