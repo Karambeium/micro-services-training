@@ -45,6 +45,12 @@ public class CustomerController {
         return "Deleted customer with name :" + c.get().getName();
     }
 
+    @PutMapping("/{id}")
+    public String updateCustomer(@PathVariable Integer id, @RequestBody Customer c) {
+        cr.save(c);
+        return "Updated Customer with id :" + id;
+    }
+
 }
 
 /**
