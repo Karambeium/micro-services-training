@@ -8,20 +8,21 @@ import com.api.repository.CustomerRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/customer")
+@RequestMapping("/api/customers")
 public class CustomerController {
 
     @Autowired
     private CustomerRepository cr;
 
-    @GetMapping("/getCustomer/{id}")
+    @GetMapping("/{id}")
     public Customer getCustomer(@PathVariable Integer id){
         return cr.getByID(id);
     }
 
-    @GetMapping("/getAllCustomers")
+    @GetMapping("")
     public List<Customer> getAllCustomers(){
         return cr.findAll();
     }
@@ -31,11 +32,19 @@ public class CustomerController {
         return cr.save(c);
     }
 
-    @PostMapping("/getByName")
+    @PostMapping("/byname")
     public List<Customer> getByName(@RequestParam String name)
     {
         return cr.findByName(name);
     }
+
+    @DeleteMapping("/{id}")
+    public String deleteCustomer(@PathVariable Integer id){
+        Optional<Customer> c = cr.findById(id);
+        cr.deleteById(id);
+        return "Deleted customer with name :" + c.get().getName();
+    }
+
 }
 
 /**
