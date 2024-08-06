@@ -27,8 +27,10 @@ public class CustomerController {
         return cr.findAll();
     }
 
-    @PostMapping("/addCustomer")
-    public Customer addCustomer(@RequestBody Customer c){
+//    @PostMapping("/addCustomer")
+    @PutMapping("/{id}")
+    public Customer addCustomer(@RequestBody Customer c, @PathVariable int id){
+        System.out.println("hi");
         return cr.save(c);
     }
 
@@ -45,7 +47,7 @@ public class CustomerController {
         return "Deleted customer with name :" + c.get().getName();
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("updateCustomer/{id}")
     public String updateCustomer(@PathVariable Integer id, @RequestBody Customer c) {
         Optional<Customer> cust  = cr.findById(id);
         cust.get().setName(c.getName());
