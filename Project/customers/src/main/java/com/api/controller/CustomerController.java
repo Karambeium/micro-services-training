@@ -31,7 +31,6 @@ public class CustomerController {
     }
 
    @PostMapping("")
-   // @PutMapping("/{id}")
     public ResponseEntity<Object> addCustomer(@RequestBody Customer c){
         List<Customer> cust = cr.findByEmail(c.getEmail());
        if(cust.size() > 0 ){
@@ -44,7 +43,26 @@ public class CustomerController {
        cr.save(c);
        return new ResponseEntity<>(c,HttpStatusCode.valueOf(200));
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> putCustomer(@RequestBody Customer c){
+        List<Customer> cust = cr.findByEmail(c.getEmail());
+        if(cust.size() > 0 ){
+            if(cust.get(0).getEmail()!=c.getEmail())
+            {
 
+                Optional<Customer> newCust  = cr.findById(c.getID());
+                newCust.get().setName(c.getName());
+                newCust.get().setEmail(c.getEmail());
+                if(c.getPassword()!=null) {
+                    newCust.get().setPassword(c.getPassword());
+                }
+                cr.save(newCust.get());
+                return new ResponseEntity<>("Updated Customer with id :" + c.getID(),HttpStatusCode.valueOf(200));
+            }
+        }
+        cr.save(c);
+        return new ResponseEntity<>(c,HttpStatusCode.valueOf(200));
+    }
     @PostMapping("/byname")
     public List<Customer> getByName(@RequestBody String name)
     {
