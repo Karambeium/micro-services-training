@@ -1,6 +1,8 @@
 package com.api.controller;
 
 import com.api.model.Customer;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -8,6 +10,7 @@ import com.api.repository.CustomerRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @RestController
@@ -27,11 +30,19 @@ public class CustomerController {
         return cr.findAll();
     }
 
-//    @PostMapping("/addCustomer")
-    @PutMapping("/{id}")
-    public Customer addCustomer(@RequestBody Customer c, @PathVariable int id){
-        System.out.println("hi");
-        return cr.save(c);
+   @PostMapping("")
+   // @PutMapping("/{id}")
+    public ResponseEntity<Object> addCustomer(@RequestBody Customer c){
+        List<Customer> cust = cr.findByEmail(c.getEmail());
+       if(cust.size() > 0 ){
+           if(cust.get(0).getEmail()!=c.getEmail())
+           {
+
+               return new ResponseEntity<>("User already exists",HttpStatusCode.valueOf(409));
+           }
+       }
+       cr.save(c);
+       return new ResponseEntity<>(c,HttpStatusCode.valueOf(200));
     }
 
     @PostMapping("/byname")
