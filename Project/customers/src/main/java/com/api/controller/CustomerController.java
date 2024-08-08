@@ -48,9 +48,19 @@ public class CustomerController {
     @PostMapping("/byname")
     public List<Customer> getByName(@RequestBody String name)
     {
+        System.out.println(name);
         return cr.findByName(name);
     }
+    @PostMapping("/byemail")
+    public ResponseEntity<Object> getByEmail(@RequestBody Customer cust)
+    {
+        List<Customer> c = cr.findByEmail(cust.getEmail());
+        if(c.size() > 0){
+            return new ResponseEntity<>(c.get(0), HttpStatusCode.valueOf(200));
+        }
 
+        return new ResponseEntity<>("Email doesn't exist", HttpStatusCode.valueOf(415));
+    }
     @DeleteMapping("/{id}")
     public String deleteCustomer(@PathVariable Integer id){
         Optional<Customer> c = cr.findById(id);
