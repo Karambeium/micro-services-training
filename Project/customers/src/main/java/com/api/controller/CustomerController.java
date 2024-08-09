@@ -69,7 +69,7 @@ public class CustomerController {
         System.out.println(name);
         return cr.findByName(name);
     }
-    @PostMapping("/byemail")
+    @PostMapping("/byEmail")
     public ResponseEntity<Object> getByEmail(@RequestBody Customer cust)
     {
         List<Customer> c = cr.findByEmail(cust.getEmail());
